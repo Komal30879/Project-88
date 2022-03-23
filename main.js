@@ -1,4 +1,4 @@
-var canvas = document.getElementById("myCanvas");
+var canvas = new fabric.Canvas('myCanvas');
 
 ball_x = 0;
 ball_y = 0;
@@ -43,25 +43,32 @@ function my_keydown(e)
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
 	
+	console.log("hi ball x");
 	if((ball_x == hole_x)&&(ball_y == hole_y)){
 		canvas.remove(ball_obj);
+		document.getElementById("hd3").innerHTML = "You Have Hit The Goal!!!"
+		document.getElementById("canvas").style.borderColor = "red";
 	}
 	else{
+		console.log("welcome");
 		if(keyPressed == '38')
 		{
 			up();
 			console.log("up");
 		}
+		console.log("pink");
 		if(keyPressed == '40')
 		{
 			down();
 			console.log("down");
 		}
+		console.log("whoo");
 		if(keyPressed == '37')
 		{
 			left();
 			console.log("left");
 		}
+		console.log("yum");
 		if(keyPressed == '39')
 		{
 			right();
@@ -69,8 +76,7 @@ function my_keydown(e)
 		}
 	}
 	
-	document.getElementById("hd3").innerHTML = "You Have Hit The Goal!!!"
-	document.getElementById("canvas").style.borderColor = "red";
+	
 
 	function up()
 	{
@@ -96,9 +102,10 @@ function my_keydown(e)
 
 	function left()
 	{
+		console.log("checking left");
 		if(ball_x >5)
 		{
-			ball_x = ball_x + block_image_width;
+			ball_x = ball_x - block_image_width;
 			console.log("block image width = "+ block_image_width)
 			console.log("When left arrow key is pressed x = " + ball_x + ", y = " + ball_y);
 			canvas.remove(ball_obj);
@@ -108,9 +115,10 @@ function my_keydown(e)
 
 	function right()
 	{
+		console.log("checking right");
 		if(ball_x <=1050)
 		{
-			ball_x = ball_x - block_image_width;
+			ball_x = ball_x + block_image_width;
 			console.log("block image width = "+ block_image_width)
 			console.log("When right arrow key is pressed x = " + ball_x + ", y = " + ball_y);
 			canvas.remove(ball_obj);
